@@ -1,5 +1,5 @@
 - name: Mysql 
-  hosts: Mysql
+  hosts: mysql
   become: yes
   tasks:
   - name: Disabling mysql 
