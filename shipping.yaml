@@ -34,7 +34,7 @@
 
   - name: Unzipping the application
     ansible.builtin.unarchive:
-      path: /tmp/shipping.zip
+      src: /tmp/shipping.zip
       dest: /app
       remote_src: yes
 
