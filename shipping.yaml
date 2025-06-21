@@ -31,7 +31,7 @@
 
   - name: Downloading Shipping application
     ansible.builtin.get_url:
-      url: https://roboshop-builds.s3.amazonaws.com/shipping.zip
+      url: https://my-roboshop-files.s3.us-east-1.amazonaws.com/shipping.zip
       dest: /tmp/shipping.zip
 
   - name: Unzipping the application
@@ -80,14 +80,6 @@
 
   - name: load cities data
     ansible.builtin.shell: "mysql -h mysql.arundev.store -uroot -p{{mysql_password}}  < /app/db/schema.sql"
-    when: schema.stdout != "1"
-
-  - name: load master-data cities data
-    ansible.builtin.shell: "mysql -h mysql.arundev.store -uroot -p{{mysql_password}}  < /app/db/master-data.sql"
-    when: schema.stdout != "1"
-
-  - name: load app-user data
-    ansible.builtin.shell: "mysql -h mysql.arundev.store -uroot -p{{mysql_password}}  < /app/db/app-user.sql"
     when: schema.stdout != "1"
 
   - name: start and enable shipping
