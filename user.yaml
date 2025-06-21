@@ -24,13 +24,13 @@
   
   - name: Recursively remove app directory
     ansible.builtin.file:
-      path: /usr/share/nginx/html/
+      path: /app
       state: absent
 
   - name: Creating html directory
     ansible.builtin.file:
-      path: /usr/share/nginx/html/
-      state: present
+      path: /app
+      state: directory
 
   - name: Downloading user application
     ansible.builtin.get_url:
