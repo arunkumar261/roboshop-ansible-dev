@@ -79,7 +79,15 @@
       msg: "schema output: {{schema}}"
 
   - name: load cities data
-    ansible.builtin.shell: "mysql -h mysql.arundev.store -uroot -p{{mysql_password}}  < /app/schema/shipping.sql"
+    ansible.builtin.shell: "mysql -h mysql.arundev.store -uroot -p{{mysql_password}}  < /app/db/schema.sql"
+    when: schema.stdout != "1"
+
+  - name: load master-data cities data
+    ansible.builtin.shell: "mysql -h mysql.arundev.store -uroot -p{{mysql_password}}  < /app/db/master-data.sql"
+    when: schema.stdout != "1"
+
+  - name: load app-user data
+    ansible.builtin.shell: "mysql -h mysql.arundev.store -uroot -p{{mysql_password}}  < /app/db/app-user.sql"
     when: schema.stdout != "1"
 
   - name: start and enable shipping
