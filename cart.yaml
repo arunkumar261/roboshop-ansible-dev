@@ -16,6 +16,7 @@
   - name: Checking roboshop user exists or not
     ansible.builtin.command: id roboshop
     register: output 
+    ignore_errors: true
   
   - name: Creating roboshop user
     ansible.builtin.user:
