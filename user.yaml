@@ -43,7 +43,7 @@
       dest: /app
       remote_src: yes
   
-  - name: NPM dependencies
+  - name: npm dependencies
     ansible.builtin.command: npm install
     args:
       chdir: /app
@@ -60,7 +60,7 @@
   - name: Start and enable user
     ansible.builtin.service:
       name: user
-      state: present
+      state: started
       enabled: yes
   
   - name: Copying mongo repo
