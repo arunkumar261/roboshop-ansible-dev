@@ -23,7 +23,7 @@
   - name: creating app directory
     ansible.builtin.file:
       path: /app
-      state: present
+      state: directory
 
   - name: download payment application
     ansible.builtin.get_url:
